@@ -1,0 +1,64 @@
+Hit http://security.ubuntu.com trusty-security InRelease
+Get:1 http://repo.mysql.com trusty InRelease [34.0 kB]
+Ign http://archive.ubuntu.com trusty InRelease
+Ign http://repo.mysql.com trusty InRelease
+Hit http://security.ubuntu.com trusty-security/main amd64 Packages
+Hit http://repo.mysql.com trusty/mysql-5.7-dmr amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates InRelease
+Hit http://archive.ubuntu.com trusty-backports InRelease
+Hit http://security.ubuntu.com trusty-security/restricted amd64 Packages
+Hit http://security.ubuntu.com trusty-security/universe amd64 Packages
+Hit http://archive.ubuntu.com trusty Release.gpg
+Hit http://archive.ubuntu.com trusty Release
+Hit http://security.ubuntu.com trusty-security/multiverse amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates/main amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates/restricted amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates/universe amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates/multiverse amd64 Packages
+Hit http://archive.ubuntu.com trusty-backports/main amd64 Packages
+Hit http://archive.ubuntu.com trusty-backports/restricted amd64 Packages
+Hit http://archive.ubuntu.com trusty-backports/universe amd64 Packages
+Hit http://archive.ubuntu.com trusty-backports/multiverse amd64 Packages
+Hit http://archive.ubuntu.com trusty/main amd64 Packages
+Get:2 https://esm.ubuntu.com trusty-infra-security InRelease
+Hit http://archive.ubuntu.com trusty/restricted amd64 Packages
+Get:3 https://esm.ubuntu.com trusty-infra-updates InRelease
+Hit http://archive.ubuntu.com trusty/universe amd64 Packages
+Hit https://esm.ubuntu.com trusty-infra-security/main amd64 Packages
+Hit http://archive.ubuntu.com trusty/multiverse amd64 Packages
+Hit https://esm.ubuntu.com trusty-infra-updates/main amd64 Packages
+Fetched 48.9 kB in 14s (3372 B/s)
+Reading package lists...
+W: GPG error: http://repo.mysql.com trusty InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 467B942D3A79BD29
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/main amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_main_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/restricted amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_restricted_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/universe amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_universe_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/multiverse amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_multiverse_binary-amd64_Packages.gz)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+
+153 additional updates are available with UA Infrastructure ESM.
+To see these additional updates run: apt list --upgradable
+See https://ubuntu.com/advantage or run: sudo ua status
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/main amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_main_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/restricted amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_restricted_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/universe amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_universe_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/multiverse amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_multiverse_binary-amd64_Packages.gz)
+W: You may want to run apt-get update to correct these problems
+Reading package lists...
+Building dependency tree...
+Reading state information...
+nginx is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/main amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_main_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/restricted amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_restricted_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/universe amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_universe_binary-amd64_Packages.gz)
+W: Duplicate sources.list entry http://archive.ubuntu.com/ubuntu/ trusty-backports/multiverse amd64 Packages (/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_trusty-backports_multiverse_binary-amd64_Packages.gz)
+W: You may want to run apt-get update to correct these problems
+mkdir: cannot create directory '/data/web_static/releases/': File exists
+mkdir: cannot create directory '/data/web_static/shared/': File exists
+chown: invalid user: 'ubuntu:ubuntu'
+ * Restarting nginx nginx
+   ...fail!
