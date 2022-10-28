@@ -1,15 +1,14 @@
 #!/usr/bin/python3
 """This creates and distributes an archive to my web servers"""
 
+from fabric.api import *
+from os import path
+from datetime import datetime
 
 env.hosts = ['100.26.53.11', '18.204.10.149']
 env.user = 'ubuntu'
 env.key_filename = '~/.ssh/id_rsa'
 
-
-from fabric.api import *
-from os import path
-from datetime import datetime
 
 def do_pack():
     """The prototype for the function"""
@@ -26,8 +25,8 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-	"""This distributes an archive to my web servers using the function
-	do_deploy"""
+    """This distributes an archive to my web servers using the function
+    do_deploy"""
     if not (path.exists(archive_path)):
         return False
 
