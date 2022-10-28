@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 #This sets up my web server for the deployment of web_Static
 
-sudo apt-get -y update
-sudo apt-get -y upgrade
+sudo apt-get -y update > /dev/null
 
+#install nginx
 sudo apt-get -y install nginx
-mkdir -p /data/web_static/
-mkdir /data/web_static/releases/
-mkdir /data/web_static/shared/
-mkdir -p /data/web_static/releases/test/
+sudo service nginx start
+
+#configure the file directories
+sudo mkdir -p /data/web_static/
+sudo mkdir /data/web_static/releases/
+sudo mkdir /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/
 touch /data/web_static/releases/test/index.html
 echo "<html>
 	<head>
@@ -16,8 +19,14 @@ echo "<html>
 	<body>
         	<h1>Holberton School</h1>
 	</body>
-	</html>" > /data/web_static/releases/test/index.html
-ln -sf /data/web_static/current /data/web_static/releases/test/
+	</html>" | sudo tee /data/web_static/releases/test/index.html > /dev/null
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+
+#set owners
 sudo chown -R ubuntu:ubuntu /data/
-sed -i '48 i\ \tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}\n' /etc/nginx/sites-enabled/default
+
+#configure nginx
+sudo sed -i '44i \\n\tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}' /etc/nginx/sites-available/default
+
+#restart nginx
 sudo service nginx restart
