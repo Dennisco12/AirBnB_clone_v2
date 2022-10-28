@@ -10,11 +10,11 @@ env.key_filename = '~/.ssh/id_rsa'
 
 
 def deploy():
-	"""This calls the function do_pack and store the path of
-	the created archive"""
-	archive_path = do_pack()
-	if archive_path is None:
-		return False
+    """This calls the function do_pack and store the path of
+    the created archive"""
+    archive_path = do_pack()
+    if archive_path is None:
+        return False
 
-	ret = do_deploy(archive_path)
-	return ret
+    ret = do_deploy(archive_path)
+    return ret
