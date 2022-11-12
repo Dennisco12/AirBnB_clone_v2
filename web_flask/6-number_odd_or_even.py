@@ -7,21 +7,25 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello_hbnb():
     """This returns the required string"""
     return "Hello HBNB!"
+
 
 @app.route('/hbnb')
 def hbnb():
     """This returns the string 'HBNB' """
     return "HBNB"
 
+
 @app.route('/c/<text>')
 def Cisfun(text):
     """This returns a text"""
     text = text.replace('_', ' ')
     return "C {}".format(text)
+
 
 @app.route('/python/')
 @app.route('/python/<text>')
@@ -30,11 +34,13 @@ def pythoniscool(text="is cool"):
     text = text.replace("_", " ")
     return "Python {}".format(text)
 
+
 @app.route('/number/<int:n>')
 def isnumber(n=None):
     """This checks if the input is a number and returns the corresponding
     string"""
     return "{} is a number".format(n)
+
 
 @app.route('/number_template/<int:n>')
 def numbertemplate(n=None):
@@ -42,11 +48,13 @@ def numbertemplate(n=None):
     path = '5-number.html'
     return render_template(path, n=n)
 
+
 @app.route('/number_odd_or_even/<int:n>')
 def oddoreven(n):
     """This displays an html page only if n is an integer"""
     file_path = '6-number_odd_or_even.html'
     return render_template(file_path, n=n)
+
 
 if __name__ == '__main__':
     app.url_map.strict_slashes = False

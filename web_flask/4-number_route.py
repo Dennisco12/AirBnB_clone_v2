@@ -7,21 +7,25 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello_hbnb():
     """This returns the required string"""
     return "Hello HBNB!"
+
 
 @app.route('/hbnb')
 def hbnb():
     """This returns the string 'HBNB' """
     return "HBNB"
 
+
 @app.route('/c/<text>')
 def Cisfun(text):
     """This returns a text"""
     text = text.replace('_', ' ')
     return "C {}".format(text)
+
 
 @app.route('/python/')
 @app.route('/python/<text>')
@@ -30,11 +34,13 @@ def pythoniscool(text="is cool"):
     text = text.replace("_", " ")
     return "Python {}".format(text)
 
+
 @app.route('/number/<int:n>')
 def isnumber(n=None):
     """This checks if the input is a numbesr and returns the corresponding
     string"""
     return "{} is a number".format(n)
+
 
 if __name__ == '__main__':
     app.url_map.strict_slashes = False
