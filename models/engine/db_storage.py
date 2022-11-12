@@ -12,6 +12,9 @@ from models.review import Review
 from models.amenity import Amenity
 import os
 
+all_classes = {
+        'State': State, 'City': City, 'User': User,
+        'Place': Place, 'Review': Review, 'Amenity': Amenity}
 
 class DBStorage:
     """This class manages db storage of hbnb models using SQLAlchemy"""
@@ -19,30 +22,31 @@ class DBStorage:
     __session = None
 
     def __init__(self):
+        """Creates the SQLAlchemy engine"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
                                       .format(os.getenv('HBNB_MYSQL_USER'),
                                               os.getenv('HBNB_MYSQL_PWD'),
                                               os.getenv('HBNB_MYSQL_HOST'),
                                               os.getenv('HBNB_MYSQL_DB')),
                                       pool_pre_ping=True)
+        #drop tables if enviroment in test mode
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        Session = sessionmaker(self.__engine)
-        self.__session = Session()
-        temp_dict = {}
-        if cls is None:
-            classes = [State, City, User, Place, Amenity, Review]
-            for clss in classes:
-                results = self.__session.query(clss).all()
-                for result in results:
-                    temp_dict[clss.__name__ + '.' + result.id] = result
+        """Return all objects by class or just everything"""
+        obj_dict = {}
+
+        if cls:
+            for row in self.__session.query(cls).all():
+                obj_dict.update({'{}.{}'.format(type(cls).__name__,
+                    row.id,): row})
         else:
-            results = self.__session.query(cls).all()
-            for result in results:
-                temp_dict[cls.__name__ + '.' + result.id] = result
-        return temp_dict
+            for key, val in all_classes.items():
+                for row in self.__session.query(val):
+                    obj_dict.update({'{}.{}'.format(type(row).__name__,
+                        row.id,): row})
+        return obj_dict
 
     def new(self, obj):
         """ add a new element in the table """

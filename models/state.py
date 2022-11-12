@@ -15,13 +15,13 @@ class State(BaseModel, Base):
     cities = relationship("City", cascade="all, delete, delete-orphan",
                           backref="state")
 
-    # if models.storage_type != 'db':
-    @property
-    def cities(self):
-        """ getter for state city instances  """
-        state_cities = []
-        all_cities = models.storage.all(City)
-        for city in all_cities.values():
-            if city.state_id == self.id:
-                state_cities.append(city)
-        return state_cities
+    if os.getenv('HBNB_TYPE_STORAGE') != 'db':
+        @property
+        def cities(self):
+            """ getter for state city instances  """
+            state_cities = []
+            all_cities = models.storage.all(City)
+            for city in all_cities.values():
+                if city.state_id == self.id:
+                    state_cities.append(city)
+            return state_cities
