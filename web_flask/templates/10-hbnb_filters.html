@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<TITLE>AirBnB clone</TITLE>
+		<LINK rel="shortcut icon" href="../images/icon.ico">
+		<LINK rel="stylesheet" href="static/styles/4-common.css">
+		<LINK rel="stylesheet" href="static/styles/3-header.css">
+		<LINK rel="stylesheet" href="static/styles/3-footer.css">
+		<LINK rel="stylesheet" href="static/styles/6-filter.css">
+	</HEAD>
+	<BODY>
+		<HEADER>
+			<DIV CLASS="logo"></DIV>
+		</HEADER>
+		<DIV CLASS="container">
+			<SECTION CLASS="filters">
+				<DIV CLASS="locations">
+					<H3>States</H3>
+					<H4>&nbsp;</H4>
+					<DIV CLASS="popover">
+						{% for state in all_states.values()|sort(attribute='name') %}
+						<UL>
+							<LI>
+								<H2>{{ state.name }}</H2>
+								{% for city in state.cities|sort(attribute="name") %}
+								<UL>
+									<LI><DIV CLASS="list_content">{{ city.name }}</DIV></LI>
+								</UL>
+								{% endfor %}
+							</LI>
+						</UL>
+						{% endfor %}
+					</DIV>
+				</DIV>
+				<DIV CLASS="amenities">
+					<H3>Amenities</H3>
+					<H4>&nbsp;</H4>
+					<DIV CLASS="popover">
+						{% for amenity in all_amenities.value()|sort(attribute='name') %}
+						<UL>
+							<LI><DIV CLASS="list_content">{{ amenity.name }}</DIV></LI>
+						</UL>
+						{% endfor %}
+					</DIV>
+				</DIV>
+				<BUTTON type="button">Search</BUTTON>
+			</SECTION>
+		</DIV>
+		<FOOTER>
+			<P>Holberton School</P>
+		</FOOTER>
+	</BODY>
+</HTML>
