@@ -16,6 +16,7 @@ all_classes = {
         'State': State, 'City': City, 'User': User,
         'Place': Place, 'Review': Review, 'Amenity': Amenity}
 
+
 class DBStorage:
     """This class manages db storage of hbnb models using SQLAlchemy"""
     __engine = None
@@ -29,7 +30,7 @@ class DBStorage:
                                               os.getenv('HBNB_MYSQL_HOST'),
                                               os.getenv('HBNB_MYSQL_DB')),
                                       pool_pre_ping=True)
-        #drop tables if enviroment in test mode
+        # drop tables if enviroment in test mode
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
@@ -40,12 +41,12 @@ class DBStorage:
         if cls:
             for row in self.__session.query(cls).all():
                 obj_dict.update({'{}.{}'.format(type(cls).__name__,
-                    row.id,): row})
+                                row.id,): row})
         else:
             for key, val in all_classes.items():
                 for row in self.__session.query(val):
                     obj_dict.update({'{}.{}'.format(type(row).__name__,
-                        row.id,): row})
+                                    row.id,): row})
         return obj_dict
 
     def new(self, obj):
